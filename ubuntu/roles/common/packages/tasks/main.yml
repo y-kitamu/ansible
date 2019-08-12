@@ -1,0 +1,21 @@
+---
+## ディストリビューションごとのロール変数読み込み
+- name: main / Add the OS specific variables
+  include_vars: "{{ ansible_os_family }}.yml"  # 読み込むファイルには必要なパッケージを書いておく
+
+- name: main / Update apt packages
+  apt:
+    update_cache: yes  # yes にすることで apt-get update を実行
+  when: ansible_os_family == "Debian"
+
+## 必要モジュールをインストール
+- name: main / Install the required packages
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ required_packages }}"  # with_items ディレクティブを使用して繰り返し処理
+    
+
+# TODO : emacs のインストール(ソースから)
+# https://blog.mosuke.tech/entry/2014/11/16/153223/
+# https://qiita.com/smallpalace/items/113c2a35c7e550bb9045

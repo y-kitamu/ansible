@@ -1,0 +1,15 @@
+- hosts: test_servers
+  tasks:
+  - name: create directory
+    file:
+      path: /Users/kitamura/tmp/
+      state: directory
+      owner: kitamura
+      mode: 0755
+
+  - name: copy file
+    copy:
+      src: /etc/hosts
+      dest: /Users/kitamura/tmp/hosts
+      owner: kitamura
+      mode: 0644

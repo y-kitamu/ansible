@@ -1,0 +1,20 @@
+---
+- name: Initialize OS setting for Desktop Ubuntu
+  hosts: ubuntu
+  become: true
+  vars:
+    ansible_sudo_pass: "{{ vault_ubuntu_password }}" ## TODO hide
+  roles:
+    # - name: common/locale
+    #   tags: locale
+    - name: common/packages
+      tags: packages
+    # - name: common/users
+    #   tags: users
+    # - name: common/networks
+    #   tags: networks
+    # - name: common/resolver
+    #   tags: resolver
+    # - name: common/times
+    #   tags: times
+  
