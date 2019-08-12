@@ -1,6 +1,7 @@
 ---
 required_packages:
   - "build-essential"
+  - "cmake"
   # for emacs
   - "libgtk-3-dev"
   - "libtiff5-dev"
